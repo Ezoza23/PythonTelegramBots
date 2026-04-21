@@ -21,7 +21,7 @@ def view_products(path):
 
 def add_to_cart(product):
     data = json_read('store_data.json')
-    cart = json_read('../assignment 3/cart.json')
+    cart = json_read('/cart.json')
 
     product = product.lower()
     found_in_store = False
@@ -50,12 +50,12 @@ def add_to_cart(product):
     if not found_in_store:
         print("Product not found.")
 
-    with open('../assignment 3/cart.json', 'w') as f:
+    with open('/cart.json', 'w') as f:
         json.dump(cart, f, indent=4)
 
 # add_to_cart('headphones')
 def see_cart(username, password):
-    data = json_read('../assignment 3/users.json')
+    data = json_read('/users.json')
     print(f"{'Product':<15} {'Price':<10} {'Quantity':<10}")
     for i in data:
         if i['username']==username and i['password']==password:
@@ -63,7 +63,7 @@ def see_cart(username, password):
                 print(f"{j['product']:<15} {j['price']:<10} {j['quantity']:<10}")
 
 def remove(username, password):
-    data = json_read('../assignment 3/cart.json')
+    data = json_read('/cart.json')
     choice = int(input('''What do you want?
                     1: Clear cart;
                     2: Remove product one by one;
@@ -86,14 +86,14 @@ def remove(username, password):
                         i['cart'].clear()
                     else:
                         print('Invalid choice')
-                    with open('../assignment 3/cart.json', 'w') as f:
+                    with open('/cart.json', 'w') as f:
                         json.dump(data, f, indent=4)
 # remove(1,'Headphones')
 
 
 
 def sign_up(username, password, is_admin=False):
-    data=json_read('../assignment 3/users.json')
+    data=json_read('/users.json')
     id=len(data)+1
     d_info={'id': id, 'username': username, 'password': password, 'is_admin':is_admin, 'cart': {}, 'purchase': {}}
     for i in data:
@@ -102,12 +102,12 @@ def sign_up(username, password, is_admin=False):
             break
     else:
         data.append(d_info)
-        with open('../assignment 3/users.json', 'w') as file:
+        with open('/users.json', 'w') as file:
             json.dump(data, file, indent=4)
 
 
 def login(username, password):
-    data=json_read('../assignment 3/users.json')
+    data=json_read('/users.json')
     for i in data:
         if i['username']==username and i['password']==password:
             print(f'Welcome back {username}!')
@@ -156,7 +156,7 @@ def see_all_products():
     for i in data:
         print(f'{i['id']:<5}  {i['name']:<10} {i['price']:<10} {i['stock']:<10} {i['category']:<10}')
 def see_all_users():
-    data=json_read('../assignment 3/users.json')
+    data=json_read('/users.json')
     print(f'{'id':<5} {'username':<10} {'password':<10} {'is_admin':<10}')
     for i in data:
         print(f'{i['id']:<5} {i['username']:<10} {i['password']:<10} {i['is_admin']:<10}')
@@ -174,7 +174,7 @@ def set_user_admin():
 
     write_json('store_data.json', data)
 def remove_user():
-    data=json_read('../assignment 3/users.json')
+    data=json_read('/users.json')
     name=input('Enter name: ')
     for i in data:
         if i['username'].lower()==name.lower():
@@ -182,28 +182,28 @@ def remove_user():
             break
     else:
         print('User not found')
-    write_json('../assignment 3/users.json', data)
+    write_json('/users.json', data)
 
 def add_user():
-    data=json_read('../assignment 3/users.json')
+    data=json_read('/users.json')
     id=len(data)+1
     username=input('Enter username: ')
     password=input('Enter the password: ')
     is_admin=input('Is admin?: ').strip().lower()
     if is_admin=='true':
         is_admin=True
-        data1=json_read('../assignment 3/admins.json')
+        data1=json_read('/admins.json')
         info = {'id': id, 'username': username, 'password': password, 'is_admin': is_admin}
         data1.append(info)
-        write_json('../assignment 3/admins.json', data1)
+        write_json('/admins.json', data1)
     else:
         is_admin=False
     info={'id': id, 'username': username, 'password': password, 'is_admin':is_admin}
     data.append(info)
-    write_json('../assignment 3/users.json', data)
+    write_json('/users.json', data)
 # add_user()
 def see_all_admins():
-    data=json_read('../assignment 3/admins.json')
+    data=json_read('/admins.json')
     print(f'{'id':<5} {'username':<10} {'password':<10} {'is_admin':<10}')
     for i in data:
         print(f'{i['id']:<5} {i['username']:<10} {i['password']:<10} {i['is_admin']:<10}')
@@ -242,7 +242,7 @@ def product_edit(choice):
 
 
 def admin_login(username, password):
-    data=json_read('../assignment 3/admins.json')
+    data=json_read('/admins.json')
     for i in data:
         if i['username']==username and i['password']==password:
             while True:
