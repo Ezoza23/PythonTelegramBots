@@ -5,6 +5,24 @@ def json_read(path):
     with open(path, 'r') as f:
         data=json.load(f)
         return data
+def total(path, col):
+    data=json_read(path)
+    print(f'Number of {col}: {len(data[col])}')
+def write_json(path, new):
+    with open(path, 'w') as f:
+        json.dump(new, f, indent=4)
+
+def edit_inventory(product_id, new_price, stock, age_group):
+    data=json_read('data.json')
+    for i in data['inventory']:
+        if i['product_id']==product_id:
+            i['price']=new_price
+            i['stock']=stock
+            i['age_group']=age_group
+            break
+    else:
+
+
 
 def get_weather(city, cnt):
     api_key="850a76c5fffd68ec5940b8892d0379a8"
@@ -41,4 +59,8 @@ Wind: {wind_speed} m/s | Humidity: {humidity}% | Rain: {rain} mm
 
 
 
-print(get_weather('Tashkent', 2))
+# print(get_weather('Tashkent', 2))
+
+
+
+

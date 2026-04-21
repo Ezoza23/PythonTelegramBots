@@ -1,0 +1,87 @@
+{
+  "customers": [
+    {
+      "customer_id": 1,
+      "name": "Ali Karimov",
+      "email": "ali@example.com",
+      "city": "Tashkent"
+    },
+    {
+      "customer_id": 2,
+      "name": "Madina Yusupova",
+      "email": "madina@example.com",
+      "city": "Samarkand"
+    }
+  ],
+
+  "stores": [
+    {
+      "store_id": 1,
+      "store_name": "Central Store",
+      "location": "Tashkent"
+    },
+    {
+      "store_id": 2,
+      "store_name": "East Branch",
+      "location": "Andijan"
+    }
+  ],
+
+  "inventory": [
+    {
+      "product_id": 101,
+      "product_name": "T-shirt",
+      "price": 15.5,
+      "stock": 100,
+      "age_group": "Adult",
+      "store_id": 1
+    },
+    {
+      "product_id": 102,
+      "product_name": "Jeans",
+      "price": 40.0,
+      "stock": 50,
+      "age_group": "Adult",
+      "store_id": 1
+    },
+    {
+      "product_id": 103,
+      "product_name": "Kids Jacket",
+      "price": 25.0,
+      "stock": 30,
+      "age_group": "Kids",
+      "store_id": 2
+    }
+  ],
+
+  "orders": [
+    {
+      "order_id": 5001,
+      "customer_id": 1,
+      "store_id": 1,
+      "items": [
+        {
+          "product_id": 101,
+          "quantity": 2
+        },
+        {
+          "product_id": 102,
+          "quantity": 1
+        }
+      ],
+      "total_price": 71.0
+    },
+    {
+      "order_id": 5002,
+      "customer_id": 2,
+      "store_id": 2,
+      "items": [
+        {
+          "product_id": 103,
+          "quantity": 1
+        }
+      ],
+      "total_price": 25.0
+    }
+  ]
+}
